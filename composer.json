@@ -18,7 +18,7 @@
     },
     "require-dev": {
         "mockery/mockery" : "0.9.*",
-        "phpunit/phpunit" : "4.7.*",
+        "phpunit/phpunit" : "5.6.*",
         "satooshi/php-coveralls": "dev-master",
         "laravel/laravel": "5.2.*"
     },
