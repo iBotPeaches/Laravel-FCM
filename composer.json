@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=8.0.2",
         "illuminate/support": "^9",
         "guzzlehttp/guzzle": "^7.0",
         "monolog/monolog": "^1.19|^2.0"
