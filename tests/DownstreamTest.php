@@ -2,6 +2,7 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use LaravelFCM\Response\Exceptions\InvalidRequestException;
 use LaravelFCM\Sender\FCMSender;
 
 class ResponseTest extends FCMTestCase
@@ -86,7 +87,7 @@ class ResponseTest extends FCMTestCase
         $client->shouldReceive('request')->once()->andReturn($response);
 
         $fcm = new FCMSender($client, 'http://test.test');
-        $this->setExpectedException(\LaravelFCM\Response\Exceptions\InvalidRequestException::class);
+        $this->expectException(InvalidRequestException::class);
         $fcm->sendTo([]);
     }
 }
