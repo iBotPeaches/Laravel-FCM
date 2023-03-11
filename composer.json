@@ -14,7 +14,7 @@
         "php": ">=8.0.2",
         "illuminate/support": "^9|^10",
         "guzzlehttp/guzzle": "^7.0",
-        "monolog/monolog": "^1.19|^2.0"
+        "monolog/monolog": "^1.19|^2.0|^3.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
