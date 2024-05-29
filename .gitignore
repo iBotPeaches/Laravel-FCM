@@ -5,6 +5,7 @@ Thumbs.db
 # Project
 .env
 composer.phar
+composer.lock
 vendor
 build
 node_modules
