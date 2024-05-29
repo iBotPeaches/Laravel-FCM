@@ -5,13 +5,12 @@ use GuzzleHttp\Psr7\Response;
 use LaravelFCM\Message\Topics;
 use LaravelFCM\Sender\FCMSender;
 use LaravelFCM\Message\Exceptions\NoTopicProvidedException;
+use PHPUnit\Framework\Attributes\Test;
 
 class TopicsTest extends FCMTestCase
 {
-    /**
-     * @test
-     */
-    public function it_throw_an_exception_if_no_topic_is_provided()
+    #[Test]
+    public function it_throw_an_exception_if_no_topic_is_provided(): void
     {
         $topics = new Topics();
 
@@ -19,10 +18,8 @@ class TopicsTest extends FCMTestCase
         $topics->build();
     }
 
-    /**
-     * @test
-     */
-    public function it_has_only_one_topic()
+    #[Test]
+    public function it_has_only_one_topic(): void
     {
         $target = '/topics/myTopic';
 
@@ -33,10 +30,8 @@ class TopicsTest extends FCMTestCase
         $this->assertEquals($target, $topics->build());
     }
 
-    /**
-     * @test
-     */
-    public function it_has_two_topics_and()
+    #[Test]
+    public function it_has_two_topics_and(): void
     {
         $target = [
             'condition' => "'firstTopic' in topics && 'secondTopic' in topics",
@@ -49,10 +44,8 @@ class TopicsTest extends FCMTestCase
         $this->assertEquals($target, $topics->build());
     }
 
-    /**
-     * @test
-     */
-    public function it_has_two_topics_or()
+    #[Test]
+    public function it_has_two_topics_or(): void
     {
         $target = [
             'condition' => "'firstTopic' in topics || 'secondTopic' in topics",
@@ -65,10 +58,8 @@ class TopicsTest extends FCMTestCase
         $this->assertEquals($target, $topics->build());
     }
 
-    /**
-     * @test
-     */
-    public function it_has_two_topics_or_and_one_and()
+    #[Test]
+    public function it_has_two_topics_or_and_one_and(): void
     {
         $target = [
             'condition' => "'firstTopic' in topics || 'secondTopic' in topics && 'thirdTopic' in topics",
@@ -81,10 +72,8 @@ class TopicsTest extends FCMTestCase
         $this->assertEquals($target, $topics->build());
     }
 
-    /**
-     * @test
-     */
-    public function it_has_a_complex_topic_condition()
+    #[Test]
+    public function it_has_a_complex_topic_condition(): void
     {
         $target = [
             'condition' => "'TopicA' in topics && ('TopicB' in topics || 'TopicC' in topics) || ('TopicD' in topics && 'TopicE' in topics)",
@@ -103,10 +92,8 @@ class TopicsTest extends FCMTestCase
         $this->assertEquals($target, $topics->build());
     }
 
-    /**
-     * @test
-     */
-    public function it_send_a_notification_to_a_topic()
+    #[Test]
+    public function it_send_a_notification_to_a_topic(): void
     {
         $response = new Response(200, [], '{"message_id":6177433633397011933}');
 
@@ -125,10 +112,8 @@ class TopicsTest extends FCMTestCase
         $this->assertNull($response->error());
     }
 
-    /**
-     * @test
-     */
-    public function it_send_a_notification_to_a_topic_and_return_error()
+    #[Test]
+    public function it_send_a_notification_to_a_topic_and_return_error(): void
     {
         $response = new Response(200, [], '{"error":"TopicsMessageRateExceeded"}');
 

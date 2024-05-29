@@ -2,13 +2,12 @@
 
 use GuzzleHttp\Psr7\Response;
 use LaravelFCM\Response\TopicResponse;
+use PHPUnit\Framework\Attributes\Test;
 
-class TopicsResponseTest extends FCMTestCase
+class TopicResponseTest extends FCMTestCase
 {
-    /**
-     * @test
-     */
-    public function it_construct_a_topic_response_with_success()
+    #[Test]
+    public function it_construct_a_topic_response_with_success(): void
     {
         $topic = new \LaravelFCM\Message\Topics();
         $topic->topic('topicName');
@@ -24,10 +23,8 @@ class TopicsResponseTest extends FCMTestCase
         $this->assertNull($topicResponse->error());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_topic_response_with_error()
+    #[Test]
+    public function it_construct_a_topic_response_with_error(): void
     {
         $topic = new \LaravelFCM\Message\Topics();
         $topic->topic('topicName');
@@ -43,10 +40,8 @@ class TopicsResponseTest extends FCMTestCase
         $this->assertEquals('MessageTooBig', $topicResponse->error());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_topic_response_with_error_and_it_should_retry()
+    #[Test]
+    public function it_construct_a_topic_response_with_error_and_it_should_retry(): void
     {
         $topic = new \LaravelFCM\Message\Topics();
         $topic->topic('topicName');

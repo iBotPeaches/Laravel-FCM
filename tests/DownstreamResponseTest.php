@@ -2,13 +2,12 @@
 
 use GuzzleHttp\Psr7\Response;
 use LaravelFCM\Response\DownstreamResponse;
+use PHPUnit\Framework\Attributes\Test;
 
 class DownstreamResponseTest extends FCMTestCase
 {
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_success()
+    #[Test]
+    public function it_construct_a_response_with_a_success(): void
     {
         $token = 'new_token';
 
@@ -32,10 +31,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertCount(0, $downstreamResponse->tokensToModify());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_multiple_successes()
+    #[Test]
+    public function it_construct_a_response_with_multiple_successes(): void
     {
         $tokens = [
             'first_token',
@@ -65,10 +62,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertCount(0, $downstreamResponse->tokensToModify());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_failure()
+    #[Test]
+    public function it_construct_a_response_with_a_failure(): void
     {
         $token = 'new_token';
 
@@ -94,10 +89,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertCount(0, $downstreamResponse->tokensToModify());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_multiple_failures()
+    #[Test]
+    public function it_construct_a_response_with_multiple_failures(): void
     {
         $tokens = [
             'first_token',
@@ -133,10 +126,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertCount(0, $downstreamResponse->tokensToModify());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_token_to_change()
+    #[Test]
+    public function it_construct_a_response_with_a_token_to_change(): void
     {
         $token = 'new_token';
 
@@ -163,10 +154,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals('32', $downstreamResponse->tokensToModify()[ $token ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_multiple_tokens_to_change()
+    #[Test]
+    public function it_construct_a_response_with_multiple_tokens_to_change(): void
     {
         $tokens = [
             'first_token',
@@ -205,10 +194,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals('34', $downstreamResponse->tokensToModify()[ $tokens[ 2 ] ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_token_unavailable()
+    #[Test]
+    public function it_construct_a_response_with_a_token_unavailable(): void
     {
         $token = 'first_token';
 
@@ -236,10 +223,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals($token, $downstreamResponse->tokensToRetry()[0]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_token_server_error()
+    #[Test]
+    public function it_construct_a_response_with_a_token_server_error(): void
     {
         $token = 'first_token';
 
@@ -267,10 +252,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals($token, $downstreamResponse->tokensToRetry()[0]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_token_exceeded()
+    #[Test]
+    public function it_construct_a_response_with_a_token_exceeded(): void
     {
         $token = 'first_token';
 
@@ -298,10 +281,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals($token, $downstreamResponse->tokensToRetry()[0]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_a_mixed_token_to_retry()
+    #[Test]
+    public function it_construct_a_response_with_a_mixed_token_to_retry(): void
     {
         $tokens = [
             'first_token',
@@ -346,10 +327,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals($tokens[ 5 ], $downstreamResponse->tokensToRetry()[ 5 ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_mixed_response()
+    #[Test]
+    public function it_construct_a_response_with_mixed_response(): void
     {
         $tokens = [
             'first_token',
@@ -392,10 +371,8 @@ class DownstreamResponseTest extends FCMTestCase
         $this->assertEquals('32', $downstreamResponse->tokensToModify()[ $tokens[ 4 ] ]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_multiples_response()
+    #[Test]
+    public function it_construct_a_response_with_multiples_response(): void
     {
         $tokens = [
             'first_token',

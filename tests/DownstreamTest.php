@@ -4,13 +4,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use LaravelFCM\Response\Exceptions\InvalidRequestException;
 use LaravelFCM\Sender\FCMSender;
+use PHPUnit\Framework\Attributes\Test;
 
-class ResponseTest extends FCMTestCase
+class DownstreamTest extends FCMTestCase
 {
-    /**
-     * @test
-     */
-    public function it_send_a_notification_to_a_device()
+    #[Test]
+    public function it_send_a_notification_to_a_device(): void
     {
         $response = new Response(200, [], '{ 
 						  "multicast_id": 216,
@@ -31,10 +30,8 @@ class ResponseTest extends FCMTestCase
         $fcm->sendTo($tokens);
     }
 
-    /**
-     * @test
-     */
-    public function it_send_a_notification_to_more_than_1000_devices()
+    #[Test]
+    public function it_send_a_notification_to_more_than_1000_devices(): void
     {
         $response = new Response(200, [], '{ 
 						  "multicast_id": 216,
@@ -63,10 +60,8 @@ class ResponseTest extends FCMTestCase
         $fcm->sendTo($tokens);
     }
 
-    /**
-     * @test
-     */
-    public function an_empty_array_of_tokens_thrown_an_exception()
+    #[Test]
+    public function an_empty_array_of_tokens_thrown_an_exception(): void
     {
         $response = new Response(400, [], '{ 
 						  "multicast_id": 216,

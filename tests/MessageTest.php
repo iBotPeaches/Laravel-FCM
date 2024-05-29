@@ -5,13 +5,12 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\OptionsPriorities;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
+use PHPUnit\Framework\Attributes\Test;
 
-class PayloadTest extends FCMTestCase
+class MessageTest extends FCMTestCase
 {
-    /**
-     * @test
-     */
-    public function it_construct_a_valid_json_with_option()
+    #[Test]
+    public function it_construct_a_valid_json_with_option(): void
     {
         $targetPartial = '{
 					"collapse_key":"collapseKey",
@@ -46,10 +45,8 @@ class PayloadTest extends FCMTestCase
         $this->assertJsonStringEqualsJsonString($targetFull, $json);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_valid_json_with_data()
+    #[Test]
+    public function it_construct_a_valid_json_with_data(): void
     {
         $targetAdd = '{
 				"first_data":"first",
@@ -76,10 +73,8 @@ class PayloadTest extends FCMTestCase
         $this->assertJsonStringEqualsJsonString($targetSet, $json);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_valid_json_with_notification()
+    #[Test]
+    public function it_construct_a_valid_json_with_notification(): void
     {
         $targetPartial = '{
 					"title":"test_title",
@@ -129,10 +124,8 @@ class PayloadTest extends FCMTestCase
         $this->assertJsonStringEqualsJsonString($targetFull, $json);
     }
 
-    /**
-     * @test
-     */
-    public function it_throws_an_invalidoptionsexception_if_the_interval_is_too_big()
+    #[Test]
+    public function it_throws_an_invalidoptionsexception_if_the_interval_is_too_big(): void
     {
         $this->expectException(InvalidOptionsException::class);
 

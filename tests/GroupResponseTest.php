@@ -1,13 +1,12 @@
 <?php
 
 use LaravelFCM\Response\GroupResponse;
+use PHPUnit\Framework\Attributes\Test;
 
 class GroupResponseTest extends FCMTestCase
 {
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_successes()
+    #[Test]
+    public function it_construct_a_response_with_successes(): void
     {
         $notificationKey = 'notificationKey';
 
@@ -23,10 +22,8 @@ class GroupResponseTest extends FCMTestCase
         $this->assertCount(0, $responseGroup->tokensFailed());
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_failures()
+    #[Test]
+    public function it_construct_a_response_with_failures(): void
     {
         $notificationKey = 'notificationKey';
 
@@ -48,10 +45,8 @@ class GroupResponseTest extends FCMTestCase
         $this->assertEquals('regId2', $responseGroup->tokensFailed()[ 1]);
     }
 
-    /**
-     * @test
-     */
-    public function it_construct_a_response_with_partials_failures()
+    #[Test]
+    public function it_construct_a_response_with_partials_failures(): void
     {
         $notificationKey = 'notificationKey';
 
