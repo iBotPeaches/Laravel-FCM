@@ -40,12 +40,12 @@ class MockTopicResponse implements TopicResponseContract
     /**
      * if success set a message id.
      *
-     * @param $messageId
      * @return MockTopicResponse
      */
     public function setSuccess($messageId)
     {
         $this->messageId = $messageId;
+
         return $this;
     }
 
@@ -56,18 +56,18 @@ class MockTopicResponse implements TopicResponseContract
      */
     public function isSuccess()
     {
-        return  (bool) $this->messageId;
+        return (bool) $this->messageId;
     }
 
     /**
      * set error.
      *
-     * @param $error
      * @return MockTopicResponse
      */
     public function setError($error)
     {
         $this->error = $error;
+
         return $this;
     }
 

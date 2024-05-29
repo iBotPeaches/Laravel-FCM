@@ -2,9 +2,9 @@
 
 namespace LaravelFCM\Response;
 
-use Monolog\Logger;
 use LaravelFCM\Message\Topics;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -44,9 +44,6 @@ class TopicResponse extends BaseResponse implements TopicResponseContract
 
     /**
      * TopicResponse constructor.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
-     * @param Topics         $topic
      */
     public function __construct(ResponseInterface $response, Topics $topic)
     {
@@ -56,12 +53,10 @@ class TopicResponse extends BaseResponse implements TopicResponseContract
 
     /**
      * parse the response.
-     *
-     * @param $responseInJson
      */
     protected function parseResponse($responseInJson)
     {
-        if (!$this->parseSuccess($responseInJson)) {
+        if (! $this->parseSuccess($responseInJson)) {
             $this->parseError($responseInJson);
         }
 
@@ -72,20 +67,16 @@ class TopicResponse extends BaseResponse implements TopicResponseContract
 
     /**
      * @internal
-     *
-     * @param $responseInJson
      */
     private function parseSuccess($responseInJson)
     {
         if (array_key_exists(self::MESSAGE_ID, $responseInJson)) {
-            $this->messageId = $responseInJson[ self::MESSAGE_ID ];
+            $this->messageId = $responseInJson[self::MESSAGE_ID];
         }
     }
 
     /**
      * @internal
-     *
-     * @param $responseInJson
      */
     private function parseError($responseInJson)
     {
@@ -94,7 +85,7 @@ class TopicResponse extends BaseResponse implements TopicResponseContract
                 $this->needRetry = true;
             }
 
-            $this->error = $responseInJson[ self::ERROR ];
+            $this->error = $responseInJson[self::ERROR];
         }
     }
 
@@ -108,7 +99,7 @@ class TopicResponse extends BaseResponse implements TopicResponseContract
 
         $topic = $this->topic->build();
 
-        $logMessage = "notification send to topic: ".json_encode($topic);
+        $logMessage = 'notification send to topic: '.json_encode($topic);
         if ($this->messageId) {
             $logMessage .= "with success (message-id : $this->messageId)";
         } else {

@@ -21,7 +21,6 @@ class PayloadDataBuilder
     /**
      * add data to existing data.
      *
-     * @param array $data
      *
      * @return PayloadDataBuilder
      */
@@ -37,7 +36,6 @@ class PayloadDataBuilder
     /**
      * erase data with new data.
      *
-     * @param array $data
      *
      * @return PayloadDataBuilder
      */

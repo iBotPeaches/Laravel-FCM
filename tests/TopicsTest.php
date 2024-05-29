@@ -2,9 +2,9 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use LaravelFCM\Message\Exceptions\NoTopicProvidedException;
 use LaravelFCM\Message\Topics;
 use LaravelFCM\Sender\FCMSender;
-use LaravelFCM\Message\Exceptions\NoTopicProvidedException;
 use PHPUnit\Framework\Attributes\Test;
 
 class TopicsTest extends FCMTestCase
@@ -82,12 +82,12 @@ class TopicsTest extends FCMTestCase
         $topics = new Topics();
 
         $topics->topic('TopicA')
-               ->andTopic(function ($condition) {
-                   $condition->topic('TopicB')->orTopic('TopicC');
-               })
-               ->orTopic(function ($condition) {
-                   $condition->topic('TopicD')->andTopic('TopicE');
-               });
+            ->andTopic(function ($condition) {
+                $condition->topic('TopicB')->orTopic('TopicC');
+            })
+            ->orTopic(function ($condition) {
+                $condition->topic('TopicD')->andTopic('TopicE');
+            });
 
         $this->assertEquals($target, $topics->build());
     }

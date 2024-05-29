@@ -2,8 +2,8 @@
 
 namespace LaravelFCM\Response;
 
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -12,16 +12,25 @@ use Psr\Http\Message\ResponseInterface;
 class DownstreamResponse extends BaseResponse implements DownstreamResponseContract
 {
     const MULTICAST_ID = 'multicast_id';
+
     const CANONICAL_IDS = 'canonical_ids';
+
     const RESULTS = 'results';
 
     const MISSING_REGISTRATION = 'MissingRegistration';
+
     const MESSAGE_ID = 'message_id';
+
     const REGISTRATION_ID = 'registration_id';
+
     const NOT_REGISTERED = 'NotRegistered';
+
     const INVALID_REGISTRATION = 'InvalidRegistration';
+
     const UNAVAILABLE = 'Unavailable';
+
     const DEVICE_MESSAGE_RATE_EXCEEDED = 'DeviceMessageRateExceeded';
+
     const INTERNAL_SERVER_ERROR = 'InternalServerError';
 
     /**
@@ -47,8 +56,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * @internal
-     *
-     * @var
      */
     protected $messageId;
 
@@ -65,6 +72,7 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
      * @var array
      */
     protected $tokensToModify = [];
+
     /**
      * @internal
      *
@@ -95,9 +103,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * DownstreamResponse constructor.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
-     * @param                $tokens
      */
     public function __construct(ResponseInterface $response, $tokens)
     {
@@ -108,8 +113,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * Parse the response.
-     *
-     * @param $responseInJson
      */
     protected function parseResponse($responseInJson)
     {
@@ -126,8 +129,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * @internal
-     *
-     * @param $responseInJson
      */
     private function parse($responseInJson)
     {
@@ -150,15 +151,13 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * @internal
-     *
-     * @param $responseInJson
      */
     private function parseResult($responseInJson)
     {
         foreach ($responseInJson[self::RESULTS] as $index => $result) {
-            if (!$this->isSent($result)) {
-                if (!$this->needToBeModify($index, $result)) {
-                    if (!$this->needToBeDeleted($index, $result) && !$this->needToResend($index, $result) && !$this->checkMissingToken($result)) {
+            if (! $this->isSent($result)) {
+                if (! $this->needToBeModify($index, $result)) {
+                    if (! $this->needToBeDeleted($index, $result) && ! $this->needToResend($index, $result) && ! $this->checkMissingToken($result)) {
                         $this->needToAddError($index, $result);
                     }
                 }
@@ -168,8 +167,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * @internal
-     *
-     * @param $responseInJson
      *
      * @return bool
      */
@@ -181,20 +178,15 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
     /**
      * @internal
      *
-     * @param $results
-     *
      * @return bool
      */
     private function isSent($results)
     {
-        return array_key_exists(self::MESSAGE_ID, $results) && !array_key_exists(self::REGISTRATION_ID, $results);
+        return array_key_exists(self::MESSAGE_ID, $results) && ! array_key_exists(self::REGISTRATION_ID, $results);
     }
 
     /**
      * @internal
-     *
-     * @param $index
-     * @param $result
      *
      * @return bool
      */
@@ -213,9 +205,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * @internal
-     *
-     * @param $index
-     * @param $result
      *
      * @return bool
      */
@@ -236,9 +225,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
     /**
      * @internal
      *
-     * @param $index
-     * @param $result
-     *
      * @return bool
      */
     private function needToResend($index, $result)
@@ -257,8 +243,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
     /**
      * @internal
      *
-     * @param $result
-     *
      * @return bool
      */
     private function checkMissingToken($result)
@@ -272,9 +256,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * @internal
-     *
-     * @param $index
-     * @param $result
      */
     private function needToAddError($index, $result)
     {
@@ -303,8 +284,6 @@ class DownstreamResponse extends BaseResponse implements DownstreamResponseContr
 
     /**
      * Merge two response.
-     *
-     * @param DownstreamResponse $response
      */
     public function merge(DownstreamResponse $response)
     {

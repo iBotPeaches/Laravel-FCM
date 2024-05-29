@@ -40,12 +40,13 @@ class MockGroupResponse implements GroupResponseContract
     /**
      * set number of success.
      *
-     * @param int $numberSuccess
+     * @param  int  $numberSuccess
      * @return MockGroupResponse
      */
     public function setNumberSuccess($numberSuccess)
     {
         $this->numberTokensSuccess = $numberSuccess;
+
         return $this;
     }
 
@@ -62,12 +63,12 @@ class MockGroupResponse implements GroupResponseContract
     /**
      * set number of failures.
      *
-     * @param $numberFailures
      * @return MockGroupResponse
      */
     public function setNumberFailure($numberFailures)
     {
         $this->numberTokensSuccess = $numberFailures;
+
         return $this;
     }
 
@@ -84,12 +85,12 @@ class MockGroupResponse implements GroupResponseContract
     /**
      * add a token to the failed list.
      *
-     * @param $tokenFailed
      * @return MockGroupResponse
      */
     public function addTokenFailed($tokenFailed)
     {
         $this->tokensFailed[] = $tokenFailed;
+
         return $this;
     }
 
@@ -112,12 +113,13 @@ class MockGroupResponse implements GroupResponseContract
     }
 
     /**
-     * @param string $to
+     * @param  string  $to
      * @return MockGroupResponse
      */
     public function setTo($to)
     {
         $this->to = $to;
+
         return $this;
     }
 }

@@ -37,6 +37,7 @@ class OptionsBuilder
 
     /**
      * @internal
+     *
      * @var bool
      */
     protected $mutableContent;
@@ -73,8 +74,7 @@ class OptionsBuilder
      * This parameter identifies a group of messages
      * A maximum of 4 different collapse keys is allowed at any given time.
      *
-     * @param string $collapseKey
-     *
+     * @param  string  $collapseKey
      * @return \LaravelFCM\Message\OptionsBuilder
      */
     public function setCollapseKey($collapseKey)
@@ -88,8 +88,7 @@ class OptionsBuilder
      * Sets the priority of the message. Valid values are "normal" and "high."
      * By default, messages are sent with normal priority.
      *
-     * @param string $priority
-     *
+     * @param  string  $priority
      * @return \LaravelFCM\Message\OptionsBuilder
      *
      * @throws InvalidOptionsException
@@ -97,7 +96,7 @@ class OptionsBuilder
      */
     public function setPriority($priority)
     {
-        if (!OptionsPriorities::isValid($priority)) {
+        if (! OptionsPriorities::isValid($priority)) {
             throw new InvalidOptionsException('priority is not valid, please refer to the documentation or use the constants of the class "OptionsPriorities"');
         }
         $this->priority = $priority;
@@ -113,8 +112,7 @@ class OptionsBuilder
      * On Android, data messages wake the app by default.
      * On Chrome, currently not supported.
      *
-     * @param bool $contentAvailable
-     *
+     * @param  bool  $contentAvailable
      * @return \LaravelFCM\Message\OptionsBuilder
      */
     public function setContentAvailable($contentAvailable)
@@ -130,7 +128,7 @@ class OptionsBuilder
      * When a notification is sent and this is set to true,
      * the content of the notification can be modified before it is displayed.
      *
-     * @param String $isMutableContent
+     * @param  string  $isMutableContent
      * @return OptionsBuilder
      */
     public function setMutableContent($isMutableContent)
@@ -143,8 +141,7 @@ class OptionsBuilder
     /**
      * When this parameter is set to true, it indicates that the message should not be sent until the device becomes active.
      *
-     * @param bool $delayWhileIdle
-     *
+     * @param  bool  $delayWhileIdle
      * @return \LaravelFCM\Message\OptionsBuilder
      */
     public function setDelayWhileIdle($delayWhileIdle)
@@ -157,8 +154,7 @@ class OptionsBuilder
     /**
      * This parameter specifies how long the message should be kept in FCM storage if the device is offline.
      *
-     * @param int $timeToLive (in second) min:0 max:2419200
-     *
+     * @param  int  $timeToLive  (in second) min:0 max:2419200
      * @return \LaravelFCM\Message\OptionsBuilder
      *
      * @throws InvalidOptionsException
@@ -176,8 +172,7 @@ class OptionsBuilder
     /**
      * This parameter specifies the package name of the application where the registration tokens must match in order to receive the message.
      *
-     * @param string $restrictedPackageName
-     *
+     * @param  string  $restrictedPackageName
      * @return \LaravelFCM\Message\OptionsBuilder
      */
     public function setRestrictedPackageName($restrictedPackageName)
@@ -191,8 +186,7 @@ class OptionsBuilder
      * This parameter, when set to true, allows developers to test a request without actually sending a message.
      * It should only be used for the development.
      *
-     * @param bool $isDryRun
-     *
+     * @param  bool  $isDryRun
      * @return \LaravelFCM\Message\OptionsBuilder
      */
     public function setDryRun($isDryRun)
@@ -323,7 +317,6 @@ final class OptionsPriorities
     /**
      * check if this priority is supported by fcm.
      *
-     * @param $priority
      *
      * @return bool
      *
@@ -331,6 +324,6 @@ final class OptionsPriorities
      */
     public static function isValid($priority)
     {
-        return in_array($priority, static::getPriorities());
+        return in_array($priority, self::getPriorities());
     }
 }

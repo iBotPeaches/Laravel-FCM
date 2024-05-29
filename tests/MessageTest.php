@@ -102,23 +102,23 @@ class MessageTest extends FCMTestCase
         $notificationBuilder = new PayloadNotificationBuilder();
 
         $notificationBuilder->setTitle('test_title')
-                    ->setBody('test_body')
-                    ->setSound('test_sound')
-                    ->setBadge('test_badge');
+            ->setBody('test_body')
+            ->setSound('test_sound')
+            ->setBadge('test_badge');
 
         $json = json_encode($notificationBuilder->build()->toArray());
         $this->assertJsonStringEqualsJsonString($targetPartial, $json);
 
         $notificationBuilder
-                    ->setChannelId('test_channel_id')
-                    ->setTag('test_tag')
-                    ->setColor('test_color')
-                    ->setClickAction('test_click_action')
-                    ->setBodyLocationKey('test_body_key')
-                    ->setBodyLocationArgs('[ body0, body1 ]')
-                    ->setTitleLocationKey('test_title_key')
-                    ->setTitleLocationArgs('[ title0, title1 ]')
-                    ->setIcon('test_icon');
+            ->setChannelId('test_channel_id')
+            ->setTag('test_tag')
+            ->setColor('test_color')
+            ->setClickAction('test_click_action')
+            ->setBodyLocationKey('test_body_key')
+            ->setBodyLocationArgs('[ body0, body1 ]')
+            ->setTitleLocationKey('test_title_key')
+            ->setTitleLocationArgs('[ title0, title1 ]')
+            ->setIcon('test_icon');
 
         $json = json_encode($notificationBuilder->build()->toArray());
         $this->assertJsonStringEqualsJsonString($targetFull, $json);

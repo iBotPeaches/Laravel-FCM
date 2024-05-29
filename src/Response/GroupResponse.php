@@ -2,8 +2,8 @@
 
 namespace LaravelFCM\Response;
 
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -43,9 +43,6 @@ class GroupResponse extends BaseResponse implements GroupResponseContract
 
     /**
      * GroupResponse constructor.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
-     * @param                $to
      */
     public function __construct(ResponseInterface $response, $to)
     {
@@ -55,8 +52,6 @@ class GroupResponse extends BaseResponse implements GroupResponseContract
 
     /**
      * parse the response.
-     *
-     * @param $responseInJson
      */
     protected function parseResponse($responseInJson)
     {
@@ -86,8 +81,6 @@ class GroupResponse extends BaseResponse implements GroupResponseContract
     /**
      * @internal
      *
-     * @param $responseInJson
-     *
      * @return bool
      */
     private function parse($responseInJson)
@@ -104,8 +97,6 @@ class GroupResponse extends BaseResponse implements GroupResponseContract
 
     /**
      * @internal
-     *
-     * @param $responseInJson
      */
     private function parseFailed($responseInJson)
     {

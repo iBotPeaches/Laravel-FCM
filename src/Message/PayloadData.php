@@ -18,8 +18,6 @@ class PayloadData implements Arrayable
 
     /**
      * PayloadData constructor.
-     *
-     * @param PayloadDataBuilder $builder
      */
     public function __construct(PayloadDataBuilder $builder)
     {

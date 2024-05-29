@@ -102,8 +102,6 @@ class PayloadNotification implements Arrayable
 
     /**
      * PayloadNotification constructor.
-     *
-     * @param PayloadNotificationBuilder $builder
      */
     public function __construct(PayloadNotificationBuilder $builder)
     {
@@ -146,10 +144,10 @@ class PayloadNotification implements Arrayable
         ];
 
         // remove null values
-        $notification = array_filter($notification, function($value) {
+        $notification = array_filter($notification, function ($value) {
             return $value !== null;
         });
-        
+
         return $notification;
     }
 }

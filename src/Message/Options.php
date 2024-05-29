@@ -67,8 +67,6 @@ class Options implements Arrayable
 
     /**
      * Options constructor.
-     *
-     * @param OptionsBuilder $builder
      */
     public function __construct(OptionsBuilder $builder)
     {

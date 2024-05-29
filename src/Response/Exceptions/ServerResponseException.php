@@ -19,8 +19,6 @@ class ServerResponseException extends Exception
 
     /**
      * ServerResponseException constructor.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
      */
     public function __construct(ResponseInterface $response)
     {

@@ -20,7 +20,8 @@
         "mockery/mockery": "^1.0",
         "phpunit/phpunit" : "^11.0",
         "php-coveralls/php-coveralls": "^2.7",
-        "laravel/laravel": "11.*"
+        "laravel/laravel": "11.*",
+        "laravel/pint": "^1.16"
     },
     "autoload": {
         "psr-4": {

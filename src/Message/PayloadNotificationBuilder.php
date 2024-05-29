@@ -105,7 +105,7 @@ class PayloadNotificationBuilder
     /**
      * Title must be present on android notification and ios (watch) notification.
      *
-     * @param string $title
+     * @param  string  $title
      */
     public function __construct($title = null)
     {
@@ -116,8 +116,7 @@ class PayloadNotificationBuilder
      * Indicates notification title. This field is not visible on iOS phones and tablets.
      * but it is required for android.
      *
-     * @param string $title
-     *
+     * @param  string  $title
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setTitle($title)
@@ -130,8 +129,7 @@ class PayloadNotificationBuilder
     /**
      * Indicates notification body text.
      *
-     * @param string $body
-     *
+     * @param  string  $body
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setBody($body)
@@ -144,8 +142,7 @@ class PayloadNotificationBuilder
     /**
      * Set a channel ID for android API >= 26.
      *
-     * @param string $channelId
-     *
+     * @param  string  $channelId
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setChannelId($channelId)
@@ -159,8 +156,7 @@ class PayloadNotificationBuilder
      * Supported Android
      * Indicates notification icon. example : Sets value to myicon for drawable resource myicon.
      *
-     * @param string $icon
-     *
+     * @param  string  $icon
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setIcon($icon)
@@ -174,8 +170,7 @@ class PayloadNotificationBuilder
      * Indicates a sound to play when the device receives a notification.
      * Supports default or the filename of a sound resource bundled in the app.
      *
-     * @param string $sound
-     *
+     * @param  string  $sound
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setSound($sound)
@@ -190,8 +185,7 @@ class PayloadNotificationBuilder
      *
      * Indicates the badge on the client app home icon.
      *
-     * @param string $badge
-     *
+     * @param  string  $badge
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setBadge($badge)
@@ -208,8 +202,7 @@ class PayloadNotificationBuilder
      * If not set, each request creates a new notification.
      * If set, and a notification with the same tag is already being shown, the new notification replaces the existing one in the notification drawer.
      *
-     * @param string $tag
-     *
+     * @param  string  $tag
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setTag($tag)
@@ -224,8 +217,7 @@ class PayloadNotificationBuilder
      *
      * Indicates color of the icon, expressed in #rrggbb format
      *
-     * @param string $color
-     *
+     * @param  string  $color
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setColor($color)
@@ -238,8 +230,7 @@ class PayloadNotificationBuilder
     /**
      * Indicates the action associated with a user click on the notification.
      *
-     * @param string $action
-     *
+     * @param  string  $action
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setClickAction($action)
@@ -252,8 +243,7 @@ class PayloadNotificationBuilder
     /**
      * Indicates the key to the title string for localization.
      *
-     * @param string $titleKey
-     *
+     * @param  string  $titleKey
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setTitleLocationKey($titleKey)
@@ -266,8 +256,7 @@ class PayloadNotificationBuilder
     /**
      * Indicates the string value to replace format specifiers in the title string for localization.
      *
-     * @param mixed $titleArgs
-     *
+     * @param  mixed  $titleArgs
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setTitleLocationArgs($titleArgs)
@@ -280,8 +269,7 @@ class PayloadNotificationBuilder
     /**
      * Indicates the key to the body string for localization.
      *
-     * @param string $bodyKey
-     *
+     * @param  string  $bodyKey
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setBodyLocationKey($bodyKey)
@@ -294,8 +282,7 @@ class PayloadNotificationBuilder
     /**
      * Indicates the string value to replace format specifiers in the body string for localization.
      *
-     * @param mixed $bodyArgs
-     *
+     * @param  mixed  $bodyArgs
      * @return PayloadNotificationBuilder current instance of the builder
      */
     public function setBodyLocationArgs($bodyArgs)

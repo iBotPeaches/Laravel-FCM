@@ -11,14 +11,14 @@ use Psr\Http\Message\ResponseInterface;
 class FCMGroup extends HTTPSender
 {
     const CREATE = 'create';
+
     const ADD = 'add';
+
     const REMOVE = 'remove';
 
     /**
      * Create a group.
      *
-     * @param       $notificationKeyName
-     * @param array $registrationIds
      *
      * @return null|string notification_key
      */
@@ -34,9 +34,7 @@ class FCMGroup extends HTTPSender
     /**
      * add registrationId to a existing group.
      *
-     * @param       $notificationKeyName
-     * @param       $notificationKey
-     * @param array $registrationIds     registrationIds to add
+     * @param  array  $registrationIds  registrationIds to add
      * @return null|string notification_key
      */
     public function addToGroup($notificationKeyName, $notificationKey, array $registrationIds)
@@ -52,9 +50,7 @@ class FCMGroup extends HTTPSender
      *
      * >Note: if you remove all registrationIds the group is automatically deleted
      *
-     * @param       $notificationKeyName
-     * @param       $notificationKey
-     * @param array $registeredIds       registrationIds to remove
+     * @param  array  $registeredIds  registrationIds to remove
      * @return null|string notification_key
      */
     public function removeFromGroup($notificationKeyName, $notificationKey, array $registeredIds)
@@ -68,7 +64,6 @@ class FCMGroup extends HTTPSender
     /**
      * @internal
      *
-     * @param \Psr\Http\Message\ResponseInterface $response
      * @return null|string notification_key
      */
     private function getNotificationToken(ResponseInterface $response)
@@ -83,8 +78,6 @@ class FCMGroup extends HTTPSender
     }
 
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
-     *
      * @return bool
      */
     public function isValidResponse(ResponseInterface $response)

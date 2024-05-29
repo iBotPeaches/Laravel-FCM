@@ -9,8 +9,6 @@ interface DownstreamResponseContract
 {
     /**
      * Merge two response.
-     *
-     * @param DownstreamResponse $response
      */
     public function merge(DownstreamResponse $response);
 

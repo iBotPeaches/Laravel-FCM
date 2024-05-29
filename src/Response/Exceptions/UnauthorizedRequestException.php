@@ -12,8 +12,6 @@ class UnauthorizedRequestException extends Exception
 {
     /**
      * UnauthorizedRequestException constructor.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
      */
     public function __construct(ResponseInterface $response)
     {

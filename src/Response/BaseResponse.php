@@ -2,10 +2,10 @@
 
 namespace LaravelFCM\Response;
 
-use Psr\Http\Message\ResponseInterface;
-use LaravelFCM\Response\Exceptions\ServerResponseException;
 use LaravelFCM\Response\Exceptions\InvalidRequestException;
+use LaravelFCM\Response\Exceptions\ServerResponseException;
 use LaravelFCM\Response\Exceptions\UnauthorizedRequestException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class BaseResponse.
@@ -13,8 +13,11 @@ use LaravelFCM\Response\Exceptions\UnauthorizedRequestException;
 abstract class BaseResponse
 {
     const SUCCESS = 'success';
+
     const FAILURE = 'failure';
+
     const ERROR = 'error';
+
     const MESSAGE_ID = 'message_id';
 
     /**
@@ -24,8 +27,6 @@ abstract class BaseResponse
 
     /**
      * BaseResponse constructor.
-     *
-     * @param \Psr\Http\Message\ResponseInterface $response
      */
     public function __construct(ResponseInterface $response)
     {
@@ -38,7 +39,6 @@ abstract class BaseResponse
     /**
      * Check if the response given by fcm is parsable.
      *
-     * @param \Psr\Http\Message\ResponseInterface $response
      *
      * @throws InvalidRequestException
      * @throws ServerResponseException
@@ -64,7 +64,7 @@ abstract class BaseResponse
     /**
      * parse the response.
      *
-     * @param array $responseInJson
+     * @param  array  $responseInJson
      */
     abstract protected function parseResponse($responseInJson);
 

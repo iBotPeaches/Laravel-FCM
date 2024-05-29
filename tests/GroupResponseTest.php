@@ -41,8 +41,8 @@ class GroupResponseTest extends FCMTestCase
         $this->assertEquals(2, $responseGroup->numberFailure());
         $this->assertCount(2, $responseGroup->tokensFailed());
 
-        $this->assertEquals('regId1', $responseGroup->tokensFailed()[ 0]);
-        $this->assertEquals('regId2', $responseGroup->tokensFailed()[ 1]);
+        $this->assertEquals('regId1', $responseGroup->tokensFailed()[0]);
+        $this->assertEquals('regId2', $responseGroup->tokensFailed()[1]);
     }
 
     #[Test]

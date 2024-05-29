@@ -2,10 +2,10 @@
 
 namespace LaravelFCM;
 
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use LaravelFCM\Sender\FCMGroup;
 use LaravelFCM\Sender\FCMSender;
-use Illuminate\Support\ServiceProvider;
 
 class FCMServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,7 @@ class FCMServiceProvider extends ServiceProvider
 
     public function register()
     {
-		if (!Str::contains($this->app->version(), 'Lumen')) {
+        if (! Str::contains($this->app->version(), 'Lumen')) {
             $this->mergeConfigFrom(__DIR__.'/../config/fcm.php', 'fcm');
         }
 
@@ -33,15 +33,15 @@ class FCMServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('fcm.group', function ($app) {
-            $client = $app[ 'fcm.client' ];
-            $url = $app[ 'config' ]->get('fcm.http.server_group_url');
+            $client = $app['fcm.client'];
+            $url = $app['config']->get('fcm.http.server_group_url');
 
             return new FCMGroup($client, $url);
         });
 
         $this->app->bind('fcm.sender', function ($app) {
-            $client = $app[ 'fcm.client' ];
-            $url = $app[ 'config' ]->get('fcm.http.server_send_url');
+            $client = $app['fcm.client'];
+            $url = $app['config']->get('fcm.http.server_send_url');
 
             return new FCMSender($client, $url);
         });
