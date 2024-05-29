@@ -2,16 +2,15 @@
 
 namespace LaravelFCM;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use LaravelFCM\Sender\FCMGroup;
 use LaravelFCM\Sender\FCMSender;
 
-class FCMServiceProvider extends ServiceProvider
+class FCMServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    protected $defer = true;
-
-    public function boot()
+    public function boot(): void
     {
         if (Str::contains($this->app->version(), 'Lumen')) {
             $this->app->configure('fcm');
@@ -22,7 +21,7 @@ class FCMServiceProvider extends ServiceProvider
         }
     }
 
-    public function register()
+    public function register(): void
     {
         if (! Str::contains($this->app->version(), 'Lumen')) {
             $this->mergeConfigFrom(__DIR__.'/../config/fcm.php', 'fcm');
@@ -47,7 +46,7 @@ class FCMServiceProvider extends ServiceProvider
         });
     }
 
-    public function provides()
+    public function provides(): array
     {
         return ['fcm.client', 'fcm.group', 'fcm.sender'];
     }
