@@ -28,3 +28,4 @@ _ide_helper.php
 
 # Testing
 .phpunit.result.cache
+.phpunit.cache
