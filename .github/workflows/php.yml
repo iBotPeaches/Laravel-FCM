@@ -1,5 +1,7 @@
 name: PHP
-on: [pull_request]
+on:
+  - push
+  - pull_request
 
 jobs:
   build:
@@ -9,10 +11,9 @@ jobs:
         php-versions: ['8.1', '8.2']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup PHP with Xdebug
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
           coverage: xdebug
